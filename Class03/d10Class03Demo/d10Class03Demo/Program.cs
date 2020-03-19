@@ -14,19 +14,71 @@ namespace d10Class03Demo
             // FileAppendText();
             // ReadFile();
 
+            DeleteItem("One Fish, Two Fish, Red Fish, Blue Fish");
+
             //UpdateFile();
             // DeleteAFile();
-            PracticeUsingSplit();
+            //  PracticeUsingSplit();
         }
 
         // Write to a File
-        static void WriteToAFile()
+        static void WriteToAFile(string[] contents)
         {
             // Defined a path to our file
             // change our path to point to a specific location
             string potato = "../../../amanda.txt";
             // Wrote to the file specific text in it's location
-            File.WriteAllText(potato, "The time has come, the walrus said....");
+            File.WriteAllLines(potato, contents);
+            //File.WriteAllText(potato, "The time has come, the walrus said....");
+
+        }
+
+        static void DeleteItem(string textToRemove)
+        {
+            // Read in the file as an array
+            string[] words = ReadAllLines();
+
+
+            int occurances = 0;
+            // Go through the whole array and find the number of times it exists
+            // then minus that number from the length
+            // .Contains()
+            // .ToUpper()
+            // .ToLower()
+            // . Split(,)
+
+            for (int i = 0; i < words.Length; i++)
+            {
+                if(words[i] == textToRemove)
+                {
+                    occurances++;
+                }
+            }
+
+            // new array minus the index we want to remove. 
+            string[] newWords = new string[words.Length - occurances];
+
+            int fakeIndex = 0;
+            // find the individual index you want to remove
+            // Go through every index in the array 
+            // and evaluate if it is the workd in question
+            for (int i = 0; i < words.Length; i++)
+            {
+                // If it is not the word in question, then, we are going to add the word
+                // to the new array AND incrament our fake counter to keep track of our indexes in our new array. 
+                if(words[i] != textToRemove)
+                {
+                    // put it in the new array if the word is not what we are looking for
+                    newWords[fakeIndex] = words[i];
+                    fakeIndex++;
+                }
+            }
+
+            WriteToAFile(newWords);
+
+            // "remove the item" by ignoring it
+            // overwrite the file with the new contents.
+
 
         }
 
@@ -41,18 +93,15 @@ namespace d10Class03Demo
             Console.WriteLine(myFile);
         }
 
-        static void ReadAllLines()
+        static string[] ReadAllLines()
         {
             string potato = "../../../amanda.txt";
             string[] myText = File.ReadAllLines(potato);
-            for (int i = 0; i < myText.Length; i++)
-            {
-                Console.WriteLine(myText[i]);
-            }
+            return myText;
 
         }
 
-        static void FileAppendText()
+        static void FileAppendText(string[] contents)
         {
             string potato = "../../../amanda.txt";
 
@@ -62,15 +111,15 @@ namespace d10Class03Demo
             //myWords[1] = "Green Eggs and Ham";
 
             // alternative way to declare an array
-            string[] words =
-            {
-                "The Cat in the Hat",
-                "Green Eggs and Ham",
-                "One Fish, Two Fish, Red Fish, Blue Fish",
-                "Horton hears a Who"
-            };
+            //string[] words =
+            //{
+            //    "The Cat in the Hat",
+            //    "Green Eggs and Ham",
+            //    "One Fish, Two Fish, Red Fish, Blue Fish",
+            //    "Horton hears a Who"
+            //};
 
-            File.AppendAllLines(potato, words);
+            File.AppendAllLines(potato, contents);
         }
 
         static void ReadFile()
