@@ -1,5 +1,6 @@
 ﻿using d10Class04Demo.Classes;
 using System;
+using System.Text;
 
 namespace d10Class04Demo
 {
@@ -22,9 +23,67 @@ namespace d10Class04Demo
         {
             Console.WriteLine("Hello World!");
             // MyNewClass mnc = new MyNewClass();
-            LibraryExample();
+            //LibraryExample();
 
-            Example2();
+           // Example2();
+            ValueTypes();
+        }
+
+        public static void ValueTypes()
+        {
+            int x = 10;
+            x++;
+            int y = x;
+
+            Console.WriteLine($"X is: {x}");
+            Console.WriteLine($"Y is: {y}");
+
+            Cat josie = new Cat();
+            josie.Name = "Josie";
+            josie.Age = 9;
+
+            Console.WriteLine($"'josie' name is: {josie.Name}");
+
+            Cat belle = new Cat()
+            {
+                Name = "Belle",
+                Age = 10
+            };
+
+            Console.WriteLine($"'belle' name is: {belle.Name}");
+
+            Cat frodo = josie;
+            Console.WriteLine($"'frodo' name is: {frodo.Name}");
+
+            josie.Name = "Fred";
+            Console.WriteLine($"'josie' name is: {josie.Name}");
+            Console.WriteLine($"'Frodo' name is: {frodo.Name}");
+
+            frodo.Age = 22;
+            Console.WriteLine($"'josie' name is: {josie.Age}");
+            Console.WriteLine($"'Frodo' name is: {frodo.Age}");
+
+            frodo = belle;
+
+            Console.WriteLine($"'josie' name is: {josie.Name}");
+            Console.WriteLine($"'Frodo' name is: {frodo.Name}");
+
+
+            // strings are reference types
+            // treat them like value types
+            // live on the heap
+
+            string name = "a";
+            name += "mand";
+            name += "a";
+
+            StringBuilder sb = new StringBuilder();
+            sb.Append("a");
+            sb.Append("mand");
+            sb.Append("a");
+
+            sb.ToString();
+
         }
 
         static void Example2()
