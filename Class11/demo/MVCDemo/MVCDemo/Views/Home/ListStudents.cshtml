@@ -1,0 +1,21 @@
+﻿@model IEnumerable<MVCDemo.Models.Student>
+
+<!Doctype html>
+<html>
+<head>
+    <title>MVC Demo</title>
+    <link rel="stylesheet" href="~/styles/StyleSheet.css" type="text/css" />
+</head>
+<body>
+    <h1>Hello</h1>
+
+    @foreach (var item in Model)
+    {
+        <h2>@item.FirstName @item.LastName</h2>
+        <span> @item.Age years old</span>
+        <span> Favorite color is @item.FavoriteColor</span>
+        <hr />
+    }
+</body>
+
+</html>
