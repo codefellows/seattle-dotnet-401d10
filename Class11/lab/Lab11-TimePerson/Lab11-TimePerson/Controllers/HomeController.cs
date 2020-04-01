@@ -23,15 +23,13 @@ namespace Lab11_TimePerson.Controllers
         public IActionResult Index(int begYear, int endYear)
         {
             // To redirect to our results action with the "results" of our query
-
-            List<TimePerson> persons = TimePerson.GetPersons(begYear, endYear);
-
-            return null;
+            return RedirectToAction("Results", new { begYear, endYear });
+           
         }
 
-        public IActionResult Results(List<TimePerson> persons)
+        public IActionResult Results(int begYear, int endYear)
         {
-           
+            List<TimePerson> persons = TimePerson.GetPersons(begYear, endYear);
             return View(persons);
         }
     }
