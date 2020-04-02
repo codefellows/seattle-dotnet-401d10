@@ -22,9 +22,14 @@ namespace StudentEnrollmentDemoD10
         // bring in library Microsoft.Extensions.Configuration
         // Set yourself up for Dependency Injection. 
         // we want the configuration to be...configurable from the Program class. 
-        public Startup(IConfiguration configuration)
+        public Startup()
         {
-            Configuration = configuration;
+            // enable user secrets for a more secure way to protect our "secrets"
+            // Conn strings, api keys, etc...
+            var builder = new ConfigurationBuilder()
+                .AddEnvironmentVariables();
+            builder.AddUserSecrets<Startup>();
+            Configuration = builder.Build();
         }
 
         // This method gets called by the runtime. Use this method to add services to the container.
