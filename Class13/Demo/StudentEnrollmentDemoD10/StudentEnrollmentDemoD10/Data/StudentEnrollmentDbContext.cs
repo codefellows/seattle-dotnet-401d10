@@ -18,6 +18,8 @@ namespace StudentEnrollmentDemoD10.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Enrollments>().HasKey(e => new { e.CourseId, e.StudentId });
+
+
         }
 
         //define the tables in our db.
