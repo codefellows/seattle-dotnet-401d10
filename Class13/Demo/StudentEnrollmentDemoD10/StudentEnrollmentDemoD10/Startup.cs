@@ -10,6 +10,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using StudentEnrollmentDemoD10.Data;
+using StudentEnrollmentDemoD10.Models.Interfaces;
+using StudentEnrollmentDemoD10.Models.Services;
 
 namespace StudentEnrollmentDemoD10
 {
@@ -43,6 +45,10 @@ namespace StudentEnrollmentDemoD10
             // be sure to install Install-Package Microsoft.EntityFrameworkCore.SqlServer on Package manager console for the use of SQL Server
             services.AddDbContext<StudentEnrollmentDbContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
+            // These are our mappings.
+            // everytime you see IStudentManager, please instantiate an instance of Student Service
+            services.AddTransient<IStudentManager, StudentService>();
         }
 
         // connection string: path to your db server where your db lives
