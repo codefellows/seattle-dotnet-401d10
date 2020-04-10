@@ -20,7 +20,13 @@ namespace DemoD10BasicMVC.Controllers
         [HttpPost]
         public IActionResult AboutUs(Test test)
         {
-            return View(test);
+            if (ModelState.IsValid)
+            {
+                return View(test);
+
+            }
+
+            return RedirectToAction("Index", "Home", ModelState);
         }
     }
 }

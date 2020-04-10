@@ -18,7 +18,7 @@ namespace DemoD10BasicMVC.Models.Services
             // // GEt all the hotels from our 3rd party api
 
             // Set my destination
-            var baseUrl = @"https://localhost:44330/api";
+            var baseUrl = @"https://asyncsolution.azurewebsites.net/api";
             string route = "hotels";
 
             client.DefaultRequestHeaders.Accept.Clear();

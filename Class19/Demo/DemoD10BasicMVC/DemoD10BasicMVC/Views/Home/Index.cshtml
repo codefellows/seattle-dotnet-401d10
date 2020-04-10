@@ -1,9 +1,14 @@
-﻿@model  IEnumerable<DemoD10BasicMVC.Models.Hotel>
+﻿@model  DemoD10BasicMVC.Models.Test
+
+@{
+    Layout = "_Layout";
+
+}
 <!DOCTYPE html>
 
 <head>
     <title> Hello World </title>
-</head>
+ </head>
 
 <body>
     <h1> Hello </h1>
@@ -16,11 +21,13 @@
          <hr / >
 
 	}
-    @*<form asp-action="AboutUs" asp-controller="Cat" method="post">
+    <form asp-action="AboutUs" asp-controller="Cat" method="post">
         <label asp-for="Name"></label>
         <input asp-for="Name" />
 
+        <span asp-validation-for="Name"></span>
+
         <button type="submit">submit</button>
-    </form>*@
+    </form>
 
 </body>
