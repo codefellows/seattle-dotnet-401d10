@@ -1,0 +1,26 @@
+﻿@model  IEnumerable<DemoD10BasicMVC.Models.Hotel>
+<!DOCTYPE html>
+
+<head>
+    <title> Hello World </title>
+</head>
+
+<body>
+    <h1> Hello </h1>
+
+    <p>Hello Everyone!</p>
+    @foreach (var item in Model)
+	{
+		 <h1>@item.Name</h1>
+         <p>@item.Phone</p>
+         <hr / >
+
+	}
+    @*<form asp-action="AboutUs" asp-controller="Cat" method="post">
+        <label asp-for="Name"></label>
+        <input asp-for="Name" />
+
+        <button type="submit">submit</button>
+    </form>*@
+
+</body>
