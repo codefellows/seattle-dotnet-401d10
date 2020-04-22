@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using StudentEnrollmentDemoD10.Data;
 
 namespace StudentEnrollmentDemoD10.Migrations
 {
     [DbContext(typeof(StudentEnrollmentDbContext))]
-    partial class StudentEnrollmentDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200401233828_addedNewEntities")]
+    partial class addedNewEntities
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -26,8 +28,8 @@ namespace StudentEnrollmentDemoD10.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("CourseCode")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("CourseCode")
+                        .HasColumnType("int");
 
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)");
@@ -38,29 +40,6 @@ namespace StudentEnrollmentDemoD10.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("Courses");
-
-                    b.HasData(
-                        new
-                        {
-                            ID = 1,
-                            CourseCode = "dotnet-d10",
-                            Price = 100m,
-                            Technology = 0
-                        },
-                        new
-                        {
-                            ID = 2,
-                            CourseCode = "Intro to Underwater Basketweaving",
-                            Price = 50m,
-                            Technology = 1
-                        },
-                        new
-                        {
-                            ID = 3,
-                            CourseCode = "How to Talk to Ducks",
-                            Price = 550m,
-                            Technology = 3
-                        });
                 });
 
             modelBuilder.Entity("StudentEnrollmentDemoD10.Models.Enrollments", b =>
@@ -97,29 +76,6 @@ namespace StudentEnrollmentDemoD10.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("Students");
-
-                    b.HasData(
-                        new
-                        {
-                            ID = 1,
-                            Birthdate = new DateTime(2020, 3, 26, 14, 50, 41, 213, DateTimeKind.Local).AddTicks(2807),
-                            FirstName = "Josie",
-                            LastName = "Cat"
-                        },
-                        new
-                        {
-                            ID = 2,
-                            Birthdate = new DateTime(2019, 12, 2, 14, 50, 41, 221, DateTimeKind.Local).AddTicks(6094),
-                            FirstName = "Belle",
-                            LastName = "Kitty"
-                        },
-                        new
-                        {
-                            ID = 3,
-                            Birthdate = new DateTime(2020, 4, 20, 14, 50, 41, 221, DateTimeKind.Local).AddTicks(6265),
-                            FirstName = "Munchkin",
-                            LastName = "KitCat"
-                        });
                 });
 
             modelBuilder.Entity("StudentEnrollmentDemoD10.Models.Transcripts", b =>
