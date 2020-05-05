@@ -1,0 +1,29 @@
+﻿@{
+    Layout = "_Layout";
+
+}
+
+<!Doctype html>
+
+
+@*// I am a razor view*@
+<head>
+    <title> Home Page</title>
+    <link rel="stylesheet" href="~/StyleSheet.css" />
+ </head>
+<body>
+    <h1> WELCOME! </h1>
+
+
+    <form asp-action="SendEmail" method="post">
+        <button type="submit">SEND MY EMAIL!</button>
+    </form>
+
+    <form asp-action="Payment" method="post">
+        <button type="submit">I WANT MONEY!</button>
+    </form>
+
+
+    // component class is required
+    @await Component.InvokeAsync("TopPosts", 3);
+</body>

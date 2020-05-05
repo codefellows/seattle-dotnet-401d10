@@ -1,0 +1,17 @@
+﻿@page
+@model CMSD10DemoCode.Pages.PictureUpload.IndexModel
+@{
+}
+
+@* DON'T FORGET TO SET THE ENCTYPE! *@
+
+    <form enctype="multipart/form-data" method="post">
+
+        <label asp-for="Image"></label>
+        <input asp-for="Image" type="file" />
+
+        <button type="submit">UPLOAD</button>
+
+    </form>
+
+<img src="https://seattledotnet401d10.blob.core.windows.net/cats/kittyKat" />

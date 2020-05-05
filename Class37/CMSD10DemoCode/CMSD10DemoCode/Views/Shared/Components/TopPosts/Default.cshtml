@@ -1,0 +1,10 @@
+﻿@model IEnumerable<CMSD10DemoCode.Models.Post>
+
+<h1>Top Posts!</h1>
+
+@foreach (var post in Model)
+{
+    <h2>@post.Title</h2>
+    <p>@post.Content</p>
+    <hr/>
+}
